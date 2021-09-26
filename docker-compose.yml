@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres_mailservice:
+    image: postgres:13.4
+    container_name: postgres_mailservice
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=postgres
+      - APP_DB_USER=mailservice
+      - APP_DB_PASS=mailservice
+      - APP_DB_NAME=mailservice
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d/
+      - ./db/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
