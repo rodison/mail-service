@@ -5,16 +5,12 @@ import io.quarkus.runtime.annotations.RegisterForReflection;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.jooq.*;
-import org.jooq.impl.*;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.UUID;
 
 import static br.com.rodison.mailservice.db.jooq.generated.tables.RegisteredConsumer.REGISTERED_CONSUMER;
